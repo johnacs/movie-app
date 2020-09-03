@@ -1,4 +1,26 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created for an assignment
+
+## Getting Started
+
+Git clone this repository.
+
+### Prerequisites
+
+Run to install dependencies
+```
+yarn install
+```
+## Author
+* **John Ang** - *Responsible for keeping vests white and the coffee flowing* - [find me on Github](https://github.com/johnacs)
+
+## Built With
+* [ReactJS](https://reactjs.org/)
+* Javascript
+* HTML5/CSS3
+
+## Copyright notice
+All rights reserved, Ang Cheng Siew
+
 
 ## Available Scripts
 
