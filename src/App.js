@@ -1,35 +1,61 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './styles.css';
-import Movies from './components/Movies';
-import Movie from './components/Movie';
+import Movies from './pages/Movies';
+import Home from './pages/Home';
+import MovieDetail from './components/MovieDetail';
+import NavBar from './components/NavBar';
+import HeroBanner from './components/HeroBanner';
+
+import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Container } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+	root: {
+		flexGrow: 1
+	}
+}));
 
 function App() {
-	const [ movies, setMovies ] = useState([]);
-	const [ errorMsg, setErrorMsg ] = useState(false);
-	useEffect(() => {
-		const apiUrl = 'https://sometimes-maybe-flaky-api.gdshive.io/';
+	// const classes = useStyles();
 
-		const fetchData = async () => {
-			try {
-				const response = await fetch(apiUrl);
-				const data = await response.json();
-				console.log(data);
-				setMovies(data);
-			} catch (err) {
-				setErrorMsg(true);
-			}
-		};
+	// const [ movies, setMovies ] = useState([]);
+	// const [ errorMsg, setErrorMsg ] = useState(false);
+	// const [ loading, setLoading ] = useState(false);
 
-		fetchData();
-	}, []);
+	// useEffect(() => {
+	// 	const apiUrl = 'https://sometimes-maybe-flaky-api.gdshive.io/';
+
+	// 	const fetchData = async () => {
+	// 		try {
+	// 			setLoading(true);
+	// 			const response = await fetch(apiUrl);
+	// 			const data = await response.json();
+	// 			console.log(data);
+	// 			setMovies(data);
+	// 			setLoading(false);
+	// 		} catch (err) {
+	// 			setErrorMsg(true);
+	// 		}
+	// 	};
+
+	// 	fetchData();
+	// }, []);
+
+	// if (loading) return <h1>Loading movie listing...</h1>;
 
 	return (
-		<div className='App'>
-			<h1>App</h1>
-			{movies.map((movie, index) => {
-				return <Movie key={index} detail={movie} />;
-			})}
-		</div>
+		<Router>
+			<div>
+				<NavBar />
+				<HeroBanner />
+				<Switch>
+					<Route path='/' exact component={Home} />
+					<Route path='/movie/' component={MovieDetail} />
+					<Route path='/movies' component={Movies} />
+				</Switch>
+			</div>
+		</Router>
 	);
 }
 
