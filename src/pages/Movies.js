@@ -1,16 +1,11 @@
 import React from 'react';
 import MovieList from '../components/MovieList';
-// import useFetchApi from '../utilities/fetchApi';
 import Loading from '../components/Loading';
 import Error from '../components/Error';
-
-import { makeStyles } from '@material-ui/core/styles';
-import { Container } from '@material-ui/core';
-
+import { Container, Typography } from '@material-ui/core';
 import { useMovies } from '../MovieContext';
 
 function Movies({ location }) {
-	// const { movies, isFetching, hasError } = useFetchApi(MOVIES_ENDPOINT);
 	const { movies, hasError, isFetching } = useMovies();
 
 	if (hasError) {
@@ -39,6 +34,15 @@ function Movies({ location }) {
 
 	return (
 		<Container maxWidth='lg'>
+			{genre ? (
+				<Typography variant='h4' gutterBottom>
+					{genre} movies
+				</Typography>
+			) : (
+				<Typography variant='h4' gutterBottom>
+					Movies from {productionYear}
+				</Typography>
+			)}
 			<MovieList movies={filteredMovies} />
 		</Container>
 	);

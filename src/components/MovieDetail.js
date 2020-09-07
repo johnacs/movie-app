@@ -1,19 +1,19 @@
 import React from 'react';
 import ReactHtmlParser from 'react-html-parser';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Loading from './Loading';
 import Error from '../components/Error';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Paper, Grid, CardActions, Button } from '@material-ui/core';
-import useFetchApi from '../utilities/fetchApi';
+import { Container, Typography, Paper, Grid, CardActions, Button } from '@material-ui/core';
+import { useMovies } from '../MovieContext';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1
 	},
 	paper: {
-		padding: theme.spacing(3),
+		padding: theme.spacing(5),
 		margin: 'auto'
 	},
 	image: {
@@ -28,12 +28,12 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-const MOVIES_ENDPOINT = 'https://sometimes-maybe-flaky-api.gdshive.io/';
+// const MOVIES_ENDPOINT = 'https://sometimes-maybe-flaky-api.gdshive.io/';
 
 function MovieDetail({ location }) {
 	const classes = useStyles();
 
-	const { movies, isFetching, hasError } = useFetchApi(MOVIES_ENDPOINT);
+	const { movies, hasError, isFetching } = useMovies();
 
 	if (hasError) {
 		return <Error />;
@@ -42,6 +42,7 @@ function MovieDetail({ location }) {
 	if (isFetching) {
 		return <Loading />;
 	}
+
 	const query = new URLSearchParams(location.search);
 	let movieName = query.get('movieName').toLowerCase();
 
@@ -55,9 +56,9 @@ function MovieDetail({ location }) {
 	thisMovie = thisMovie[0];
 
 	return (
-		<div className={classes.root}>
+		<Container maxWidth='lg'>
 			<Paper className={classes.paper}>
-				<Grid container spacing={2}>
+				<Grid container spacing={4}>
 					<Grid item md>
 						<img
 							className={classes.img}
@@ -65,13 +66,13 @@ function MovieDetail({ location }) {
 							src='https://cdn.pixabay.com/photo/2016/11/15/07/09/photo-manipulation-1825450_960_720.jpg'
 						/>
 					</Grid>
-					<Grid item md direction='column' spacing={2}>
+					<Grid item container md direction='column' spacing={2}>
 						<Typography gutterBottom variant='h4'>
 							{thisMovie.name}
 						</Typography>
 						<CardActions>
 							<Button
-								component={RouterLink}
+								component={Link}
 								size='small'
 								variant='outlined'
 								to={`/movies/?genre=${thisMovie.genre}`}
@@ -79,7 +80,7 @@ function MovieDetail({ location }) {
 								{thisMovie.genre}
 							</Button>
 							<Button
-								component={RouterLink}
+								component={Link}
 								size='small'
 								variant='outlined'
 								to={`/movies/?productionYear=${thisMovie.productionYear}`}
@@ -94,7 +95,7 @@ function MovieDetail({ location }) {
 					</Grid>
 				</Grid>
 			</Paper>
-		</div>
+		</Container>
 	);
 }
 

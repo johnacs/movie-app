@@ -1,22 +1,24 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Box } from '@material-ui/core';
-const useStyles = makeStyles(() => ({
-	root: {
-		flexGrow: 1
-	},
+const useStyles = makeStyles((theme) => ({
 	hero: {
 		backgroundColor: 'grey',
 		backgroundImage: 'url(https://cdn.pixabay.com/photo/2016/11/15/07/09/photo-manipulation-1825450_960_720.jpg)',
-		height: '350px',
+		height: '500px',
 		backgroundRepeat: 'no-repeat',
-		backgroundPosition: 'center 25%',
+		backgroundPosition: 'center',
 		backgroundSize: 'cover',
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
 		color: '#fff',
-		fontSize: '4rem'
+		fontSize: '3rem',
+		marginBottom: '20px',
+		[theme.breakpoints.down('sm')]: {
+			height: 300,
+			fontSize: '2em'
+		}
 	}
 }));
 
@@ -24,9 +26,9 @@ function HeroBanner() {
 	const classes = useStyles();
 
 	return (
-		<div>
-			<Box className={classes.hero} />
-		</div>
+		<Box className={classes.hero}>
+			<Box>Movies DB</Box>
+		</Box>
 	);
 }
 
