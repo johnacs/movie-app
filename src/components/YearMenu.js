@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
@@ -13,19 +14,19 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-function GenreMenu() {
+function YearMenu() {
 	const classes = useStyles();
 
 	const [ anchorEl, setAnchorEl ] = useState(null);
-	const [ genres, setGenres ] = useState([]);
+	const [ years, setYears ] = useState([]);
 	const { movies, hasError, isFetching } = useMovies();
 
 	useEffect(
 		() => {
 			const unique = movies
-				.map((item) => item.genre)
+				.map((item) => item.productionYear)
 				.filter((value, index, self) => self.indexOf(value) === index);
-			setGenres(unique.sort());
+			setYears(unique.sort());
 		},
 		[ movies ]
 	);
@@ -39,19 +40,19 @@ function GenreMenu() {
 	};
 
 	if (hasError || isFetching) {
-		return <Button className={classes.title}>Genre</Button>;
+		return <Button className={classes.title}>Year</Button>;
 	}
 
 	return (
 		<div>
 			<Button className={classes.title} aria-controls='simple-menu' aria-haspopup='true' onClick={handleClick}>
-				Genre
+				Year
 			</Button>
 			<Menu id='simple-menu' anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
-				{genres.map((genre, index) => {
+				{years.map((year, index) => {
 					return (
-						<MenuItem key={index} component={Link} to={`/movies/?genre=${genre}`}>
-							{genre}
+						<MenuItem key={index} component={Link} to={`/movies/?productionYear=${year}`}>
+							{year}
 						</MenuItem>
 					);
 				})}
@@ -60,4 +61,4 @@ function GenreMenu() {
 	);
 }
 
-export default GenreMenu;
+export default YearMenu;

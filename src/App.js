@@ -6,18 +6,21 @@ import Home from './pages/Home';
 import MovieDetail from './components/MovieDetail';
 import NavBar from './components/NavBar';
 import HeroBanner from './components/HeroBanner';
+import { MovieProvider } from './MovieContext';
 
 function App() {
 	return (
 		<Router>
 			<div>
-				{/* <NavBar /> */}
-				<HeroBanner />
-				<Switch>
-					<Route path='/' exact component={Home} />
-					<Route path='/movie/' component={MovieDetail} />
-					<Route path='/movies' component={Movies} />
-				</Switch>
+				<MovieProvider>
+					<NavBar />
+					<HeroBanner />
+					<Switch>
+						<Route path='/' exact component={Home} />
+						<Route path='/movie/' component={MovieDetail} />
+						<Route path='/movies' component={Movies} />
+					</Switch>
+				</MovieProvider>
 			</div>
 		</Router>
 	);

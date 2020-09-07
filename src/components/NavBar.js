@@ -10,8 +10,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { Grid } from '@material-ui/core';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import SelectGenre from './SelectGenre';
+
 import GenreMenu from './GenreMenu';
+import YearMenu from './YearMenu';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -21,11 +22,12 @@ const useStyles = makeStyles((theme) => ({
 		marginRight: theme.spacing(2)
 	},
 	title: {
-		flexGrow: 1
+		// flexGrow: 1,
+		color: '#ffffff'
 	}
 }));
 
-export default function NavBar({ movies }) {
+export default function NavBar() {
 	const classes = useStyles();
 
 	return (
@@ -33,17 +35,15 @@ export default function NavBar({ movies }) {
 			<Toolbar>
 				<Grid container spacing={2}>
 					<Grid item>
-						<Typography variant='h6' color='inherit' className={classes.title} component={Link} to={`/`}>
+						<Button className={classes.title} component={Link} to={`/`}>
 							Movies
-						</Typography>
+						</Button>
 					</Grid>
 					<Grid item>
-						<GenreMenu movies={movies} />
+						<GenreMenu />
 					</Grid>
 					<Grid item>
-						<Typography variant='h6' color='inherit' className={classes.title} component={Link} to={`/`}>
-							Year
-						</Typography>
+						<YearMenu />
 					</Grid>
 				</Grid>
 			</Toolbar>
