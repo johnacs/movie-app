@@ -29,7 +29,6 @@ const useFetchApi = (url) => {
 		fetchDataFromApi();
 
 		return () => {
-			// fetchDataFromApi();
 			setDataState({
 				...dataState,
 				isFetching: true,

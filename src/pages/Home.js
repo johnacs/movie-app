@@ -7,6 +7,9 @@ import useFetchApi from '../utilities/fetchApi';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
+import SelectGenre from '../components/SelectGenre';
+import GenreMenu from '../components/GenreMenu';
+import NavBar from '../components/NavBar';
 
 const MOVIES_ENDPOINT = 'https://sometimes-maybe-flaky-api.gdshive.io/';
 
@@ -23,8 +26,9 @@ function Home() {
 
 	return (
 		<Container maxWidth='lg'>
-			<GenreBar movies={movies} />
+			<NavBar movies={movies}/>
 			<MovieList movies={movies} />
+			<GenreMenu movies={movies} />
 		</Container>
 	);
 }

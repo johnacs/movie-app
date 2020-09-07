@@ -39,7 +39,6 @@ function Movies({ location }) {
 
 	return (
 		<Container maxWidth='lg'>
-			<GenreBar movies={movies} />
 			<MovieList movies={filteredMovies} />
 		</Container>
 	);
