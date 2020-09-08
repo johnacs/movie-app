@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Box } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
 	hero: {
 		backgroundColor: 'grey',
@@ -12,11 +12,15 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		color: '#fff',
-		fontSize: '2.5rem',
 		marginBottom: '20px',
 		[theme.breakpoints.down('xs')]: {
-			height: 300,
+			height: 300
+		}
+	},
+	herotext: {
+		color: '#fff',
+		fontSize: '2.5rem',
+		[theme.breakpoints.down('xs')]: {
 			fontSize: '2em'
 		}
 	}
@@ -27,7 +31,7 @@ function HeroBanner() {
 
 	return (
 		<Box className={classes.hero}>
-			<Box>Movies DB</Box>
+			<Typography className={classes.herotext}>Movies DB</Typography>
 		</Box>
 	);
 }
