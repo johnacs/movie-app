@@ -5,7 +5,7 @@ import { Button, Menu, MenuItem } from '@material-ui/core/';
 
 import { useMovies } from '../MovieContext';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 	title: {
 		color: '#ffffff'
 	}
