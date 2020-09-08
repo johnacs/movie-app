@@ -5,30 +5,24 @@ import Loading from './Loading';
 import Error from '../components/Error';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Typography, Paper, Grid, CardActions, Button } from '@material-ui/core';
+import {
+	Card,
+	CardActionArea,
+	CardActions,
+	CardContent,
+	CardMedia,
+	Button,
+	Typography,
+	Container,
+	Box
+} from '@material-ui/core/';
 import { useMovies } from '../MovieContext';
 
 const useStyles = makeStyles((theme) => ({
-	root: {
-		flexGrow: 1
-	},
-	paper: {
-		padding: theme.spacing(5),
-		margin: 'auto'
-	},
-	image: {
-		width: '100%',
-		height: 'auto'
-	},
-	img: {
-		margin: 'auto',
-		display: 'block',
-		maxWidth: '100%',
-		maxHeight: '100%'
+	media: {
+		height: 350
 	}
 }));
-
-// const MOVIES_ENDPOINT = 'https://sometimes-maybe-flaky-api.gdshive.io/';
 
 function MovieDetail({ location }) {
 	const classes = useStyles();
@@ -56,18 +50,17 @@ function MovieDetail({ location }) {
 	thisMovie = thisMovie[0];
 
 	return (
-		<Container maxWidth='lg'>
-			<Paper className={classes.paper}>
-				<Grid container spacing={4}>
-					<Grid item md>
-						<img
-							className={classes.img}
-							alt='poster'
-							src='https://cdn.pixabay.com/photo/2016/11/15/07/09/photo-manipulation-1825450_960_720.jpg'
-						/>
-					</Grid>
-					<Grid item container md direction='column' spacing={2}>
-						<Typography gutterBottom variant='h4'>
+		<Container maxWidth='md'>
+			<Box mb={4}>
+				<Card>
+					<CardMedia
+						className={classes.media}
+						component='img'
+						image='https://cdn.pixabay.com/photo/2016/11/15/07/09/photo-manipulation-1825450_960_720.jpg'
+						title={thisMovie.name}
+					/>
+					<CardContent>
+						<Typography gutterBottom variant='h5' component='h2'>
 							{thisMovie.name}
 						</Typography>
 						<CardActions>
@@ -88,13 +81,12 @@ function MovieDetail({ location }) {
 								{thisMovie.productionYear}
 							</Button>
 						</CardActions>
-
-						<Typography variant='body2' gutterBottom>
+						<Typography variant='body2' color='textSecondary' component='p'>
 							{ReactHtmlParser(thisMovie.synopsis)}
 						</Typography>
-					</Grid>
-				</Grid>
-			</Paper>
+					</CardContent>
+				</Card>
+			</Box>
 		</Container>
 	);
 }

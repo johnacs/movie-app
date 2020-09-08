@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardActionArea, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core/';
@@ -24,7 +24,7 @@ function Movie({ detail }) {
 
 	return (
 		<Card className={classes.root}>
-			<CardActionArea component={RouterLink} color='primary' size='small' to={`/movie/?movieName=${name}`}>
+			<CardActionArea component={Link} color='primary' size='small' to={`/movie/?movieName=${name}`}>
 				<CardMedia
 					className={classes.media}
 					component='img'
@@ -41,20 +41,17 @@ function Movie({ detail }) {
 				</CardContent>
 			</CardActionArea>
 			<CardActions>
-				<Button component={RouterLink} size='small' variant='outlined' to={`/movies/?genre=${genre}`}>
+				<Button component={Link} size='small' variant='outlined' to={`/movies/?genre=${genre}`}>
 					{genre}
 				</Button>
 				<Button
-					component={RouterLink}
+					component={Link}
 					size='small'
 					variant='outlined'
 					to={`/movies/?productionYear=${productionYear}`}
 				>
 					{productionYear}
 				</Button>
-				{/* <Button component={RouterLink} color='primary' size='small' to={`/movie/?movieName=${name}`}>
-					Find out more
-				</Button> */}
 			</CardActions>
 		</Card>
 	);

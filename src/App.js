@@ -11,17 +11,15 @@ import { MovieProvider } from './MovieContext';
 function App() {
 	return (
 		<Router>
-			<div>
-				<MovieProvider>
-					<NavBar />
-					<HeroBanner />
-					<Switch>
-						<Route path='/' exact component={Home} />
-						<Route path='/movie/' component={MovieDetail} />
-						<Route path='/movies' component={Movies} />
-					</Switch>
-				</MovieProvider>
-			</div>
+			<MovieProvider>
+				<NavBar />
+				<HeroBanner />
+				<Switch>
+					<Route path='/' exact component={Home} />
+					<Route path='/movie/' component={MovieDetail} />
+					<Route path='/movies' component={Movies} />
+				</Switch>
+			</MovieProvider>
 		</Router>
 	);
 }
