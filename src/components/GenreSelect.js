@@ -15,7 +15,19 @@ const useStyles = makeStyles((theme) => ({
 		minWidth: 120
 	},
 	selectElement: {
-		color: '#ffffff'
+		color: '#ffffff',
+		'&:before': {
+			borderColor: '#fff'
+		},
+		'&:hover:not(.Mui-disabled):before': {
+			borderColor: '#fff'
+		},
+		'&:after': {
+			borderColor: '#fff'
+		},
+		'& .MuiSelect-icon': {
+			color: '#fff'
+		}
 	}
 }));
 
@@ -47,7 +59,9 @@ function GenreSelect({ history }) {
 					onChange={handleChange}
 					displayEmpty
 					className={classes.selectElement}
-					inputProps={{ 'aria-label': 'Without label' }}
+					inputProps={{
+						'aria-label': 'Without label'
+					}}
 				>
 					<MenuItem value='' disabled>
 						Genre

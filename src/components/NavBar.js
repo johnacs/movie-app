@@ -25,7 +25,7 @@ export default function NavBar() {
 				<Grid container spacing={2} alignItems='center'>
 					<Grid item>
 						<Button className={classes.title} component={Link} to={`/`}>
-							Movies
+							Home
 						</Button>
 					</Grid>
 					<Grid item>
