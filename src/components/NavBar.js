@@ -4,18 +4,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import { Toolbar, Button, Grid } from '@material-ui/core/';
 
-import GenreMenu from './GenreMenu';
-import YearMenu from './YearMenu';
+import GenreSelect from './GenreSelect';
+import YearSelect from './YearSelect';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 	root: {
 		flexGrow: 1
 	},
-	menuButton: {
-		marginRight: theme.spacing(2)
-	},
 	title: {
-		// flexGrow: 1,
 		color: '#ffffff'
 	}
 }));
@@ -26,17 +22,17 @@ export default function NavBar() {
 	return (
 		<AppBar position='fixed'>
 			<Toolbar>
-				<Grid container spacing={2}>
+				<Grid container spacing={2} alignItems='center'>
 					<Grid item>
 						<Button className={classes.title} component={Link} to={`/`}>
 							Movies
 						</Button>
 					</Grid>
 					<Grid item>
-						<GenreMenu />
+						<GenreSelect />
 					</Grid>
 					<Grid item>
-						<YearMenu />
+						<YearSelect />
 					</Grid>
 				</Grid>
 			</Toolbar>

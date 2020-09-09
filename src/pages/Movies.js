@@ -28,7 +28,7 @@ function Movies({ location }) {
 		});
 	} else if (productionYear) {
 		filteredMovies = movies.filter((movie) => {
-			return movie.productionYear == parseInt(productionYear, 10);
+			return movie.productionYear === parseInt(productionYear, 10);
 		});
 	}
 
