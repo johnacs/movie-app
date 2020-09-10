@@ -4,7 +4,7 @@ function Error() {
 	return (
 		<Container maxWidth='lg'>
 			<Box>
-				<Typography variant='subtitle2' align='center'>
+				<Typography variant='h4' align='center'>
 					Opps, something went wrong. Please reload
 				</Typography>
 			</Box>

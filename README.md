@@ -13,7 +13,7 @@ Run to install dependencies
 yarn install
 ```
 ## Author
-* **John Ang** - *Responsible for keeping vests white and the coffee flowing* - [find me on Github](https://github.com/johnacs)
+* **John Ang** - [find me on Github](https://github.com/johnacs)
 
 ## Built With
 * [ReactJS](https://reactjs.org/)
